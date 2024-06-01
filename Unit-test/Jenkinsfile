@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	environment {
-		CLASSPATH = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-jupiter-api_5.10.2.jar"
+		classpath = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-jupiter-api_5.10.2.jar"
 	}
 
 	stages {
