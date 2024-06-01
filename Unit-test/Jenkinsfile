@@ -17,10 +17,16 @@ pipeline {
 			steps {
 				// Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
 				// window  경우 bat
-				sh 'echo $classpath'
-				sh 'echo $CLASSPATH'
+				script {
+					sh 'echo $classpath'
+					sh 'echo $CLASSPATH'	
+					sh '''
+     					javac -cp $classpath -encoding UTF-8 -d classes Unit-test/src/**/*.java
+	  				'''
+				}
 				
-				sh -c 'javac -cp $classpath -encoding UTF-8 -d classes Unit-test/src/**/*.java'
+				
+				
 			}
 		}
 
