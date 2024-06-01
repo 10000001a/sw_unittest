@@ -1,6 +1,10 @@
 pipeline {
 	agent any
 
+	environment {
+		classpath = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/*"
+	}
+
 	stages {
 		stage('Checkout') {
 			steps {
@@ -15,7 +19,7 @@ pipeline {
 				// window  경우 bat
 				sh 'pwd'
 				
-				sh 'javac -encoding UTF-8 -d classes ./Unit-test/src/**/*.java'
+				sh 'javac -encoding UTF-8 -d classes Unit-test/src/**/*.java'
 			}
 		}
 
