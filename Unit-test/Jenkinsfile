@@ -21,7 +21,7 @@ pipeline {
 				
 				sh """
     				#!/bin/bash
-				javac -encoding UTF-8 -d classes Unit-test/src/**/*.java
+				javac -encoding UTF-8 -d classes Unit-test/src/Book.java Unit-test/src/BookManager.java Unit-test/src/BookManagerTest.java
 				"""
 			}
 		}
