@@ -20,7 +20,7 @@ pipeline {
 				sh 'echo $classpath'
 				sh 'echo $CLASSPATH'
 				
-				sh """
+				sh -c """
     				javac -cp $classpath -encoding UTF-8 -d classes Unit-test/src/**/*.java
 				"""
 			}
