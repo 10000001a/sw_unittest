@@ -19,9 +19,12 @@ pipeline {
 				// window  경우 bat
 				sh 'echo $CLASSPATH'
 
-				def classpath = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
+				script {
+					classpath = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
+				}
 
 				sh 'echo $CLASSPATH'
+				sh 'echo $classpath'
 				
 				sh """
     				#!/bin/bash
