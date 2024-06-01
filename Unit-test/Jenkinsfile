@@ -1,9 +1,9 @@
 pipeline {
 	agent any
 
-	// environment {
-	// 	classpath = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-jupiter-api_5.10.2.jar"
-	// }
+	environment {
+		classpath = "/Applications/Eclipse.app/Contents/Eclipse/plugins/*:classes"
+	}
 
 	stages {
 		stage('Checkout') {
@@ -17,25 +17,18 @@ pipeline {
 			steps {
 				// Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
 				// window  경우 bat
-				sh 'echo $CLASSPATH'
-
-				script {
-					classpath = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-platform-console-standalone-1.7.1.jar"
-				}
-
-				sh 'echo $CLASSPATH'
 				sh 'echo $classpath'
 				
 				sh """
     				#!/bin/bash
-				javac -encoding UTF-8 -d classes Unit-test/src/Book.java Unit-test/src/BookManager.java Unit-test/src/BookManagerTest.java
+				javac -cp $classpath -encoding UTF-8 -d classes Unit-test/src/Book.java Unit-test/src/BookManager.java Unit-test/src/BookManagerTest.java
 				"""
 			}
 		}
 
 		stage('Test') {
 			steps {
-				sh 'java -cp classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-platform-console-standalone-1.7.1.jar org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt'
+				sh 'java -cp $classpath org.junit.platform.console.ConsoleLauncher --scan-classpath > test_results.txt'
 			}
 		}
 	}		
