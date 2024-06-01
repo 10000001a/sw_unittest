@@ -19,10 +19,7 @@ pipeline {
 				// window  경우 bat
 				sh 'echo $classpath'
 				
-				sh """
-    				#!/bin/bash
-				javac -cp $classpath -encoding UTF-8 -d classes Unit-test/src/Book.java Unit-test/src/BookManager.java Unit-test/src/BookManagerTest.java
-				"""
+				sh 'javac -cp $classpath -encoding UTF-8 -d classes Unit-test/src/**/*.java'
 			}
 		}
 
