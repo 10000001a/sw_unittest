@@ -2,7 +2,7 @@ pipeline {
 	agent any
 
 	environment {
-		classpath = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/*"
+		CLASSPATH = "classes;lib/;/Applications/Eclipse.app/Contents/Eclipse/plugins/junit-jupiter-api_5.10.2.jar"
 	}
 
 	stages {
@@ -17,7 +17,7 @@ pipeline {
 			steps {
 				// Java 파일들을 컴파일하여 생성된 클래스 파일을 classes 디렉토리에 저장
 				// window  경우 bat
-				sh 'pwd'
+				sh 'echo $CLASSPATH'
 				
 				sh """
     				#!/bin/bash
